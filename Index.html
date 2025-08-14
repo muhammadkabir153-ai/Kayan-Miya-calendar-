@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Sales & Debtors Tracker</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('Service Worker registered:', reg))
+                    .catch(err => console.log('Service Worker error:', err));
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>📅 Sales & Debtors Tracker</h1>
+    </header>
+
+    <section id="calendar-section">
+        <label for="sales-date">Select Date:</label>
+        <input type="date" id="sales-date">
+        <button id="new-day-btn">New Sales Day</button>
+    </section>
+
+    <section id="sales-section">
+        <h2>Sales</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th>Portion Price</th>
+                    <th>Portions Sold</th>
+                    <th>Profit</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="sales-table-body"></tbody>
+        </table>
+        <button id="add-item-btn">Add Item</button>
+    </section>
+
+    <section id="debtors-section">
+        <h2>Debtors</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Date Taken</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody id="debtors-table-body"></tbody>
+        </table>
+        <button id="add-debtor-btn">Add Debtor</button>
+    </section>
+
+    <footer>
+        <p>Sales & Debtors Tracker PWA | Works Offline</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
