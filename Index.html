@@ -6,71 +6,76 @@
     <title>Sales & Debtors Tracker</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-    <meta name="theme-color" content="#4CAF50">
+    <script defer src="app.js"></script>
 </head>
 <body>
     <header>
-        <h1>Sales & Debtors Tracker</h1>
+        <h1>📅 Sales & Debtors Tracker</h1>
+        <button id="installBtn" style="display:none;">Install App</button>
     </header>
 
-    <main>
-        <!-- Calendar Date Picker -->
-        <section class="calendar-section">
-            <label for="salesDate">Select Date:</label>
-            <input type="date" id="salesDate">
-            <button onclick="createNewSalesDay()">New Sales for Date</button>
-        </section>
+    <!-- Calendar Section -->
+    <section>
+        <h2>Sales Calendar</h2>
+        <input type="date" id="salesDate">
+        <button id="loadSales">Load Sales</button>
+    </section>
 
-        <!-- Items Table -->
-        <section class="items-section">
-            <h2>Items</h2>
-            <table id="itemsTable">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Purchase Cost</th>
-                        <th>Portion Price</th>
-                        <th>Purchased Portions</th>
-                        <th>Profit/Loss</th>
-                        <th>Sell</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button onclick="addItem()">Add Item</button>
-        </section>
+    <!-- Sales Section -->
+    <section>
+        <h2>Sales</h2>
+        <form id="addItemForm">
+            <input type="text" id="itemName" placeholder="Item Name" required>
+            <input type="number" id="itemCost" placeholder="Purchase Cost" required>
+            <input type="number" id="portionPrice" placeholder="Portion Price" required>
+            <button type="submit">Add Item</button>
+        </form>
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th>Portion Price</th>
+                    <th>Sold</th>
+                    <th>Profit/Loss</th>
+                    <th>Actions (+/-)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
 
-        <!-- Debtors Table -->
-        <section class="debtors-section">
-            <h2>Debtors</h2>
-            <table id="debtorsTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Item</th>
-                        <th>Amount</th>
-                        <th>Due Date</th>
-                        <th>Collected</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button onclick="addDebtor()">Add Debtor</button>
-        </section>
+    <!-- Debtors Section -->
+    <section>
+        <h2>Debtors</h2>
+        <form id="addDebtorForm">
+            <input type="text" id="debtorName" placeholder="Debtor Name" required>
+            <input type="text" id="debtorItem" placeholder="Item Taken" required>
+            <input type="number" id="debtorAmount" placeholder="Amount Owed" required>
+            <input type="date" id="debtorDue" required>
+            <button type="submit">Add Debtor</button>
+        </form>
+        <table id="debtorsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Date Taken</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
 
-        <!-- Backup / Restore -->
-        <section class="backup-section">
-            <h2>Backup & Restore</h2>
-            <button onclick="exportData()">Export Data (JSON)</button>
-            <input type="file" id="importFile" accept=".json" onchange="importData(event)">
-        </section>
-    </main>
+    <!-- Backup Section -->
+    <section>
+        <h2>Backup & Restore</h2>
+        <button id="exportData">Export Data</button>
+        <input type="file" id="importData" accept=".json">
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Sales & Debtors Tracker</p>
-    </footer>
-
-    <script src="app.js"></script>
 </body>
 </html>
